@@ -9,3 +9,11 @@ services:
       - "3000:80"
     volumes:
       - ./front/src:/app/src
+  back:
+    build:
+      context: backend
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "3001:80"
+    volumes:
+      - ./backend/src:/app/src
