@@ -1,0 +1,56 @@
+/* LoginPage.css */
+
+.main_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login_container,
+.register_container {
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+
+.txt_login {
+  color: #007bff;
+}
+
+.btn_login {
+  background-color: #007bff;
+  color: white;
+}
+
+.txt_register {
+  color: #28a745;
+}
+
+.btn_register {
+  background-color: #28a745;
+  color: white;
+}
