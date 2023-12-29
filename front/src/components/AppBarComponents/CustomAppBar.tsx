@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import './CustomAppBar.css';
@@ -11,14 +11,25 @@ interface AppBarRoute {
 }
 
 export const CustomAppBar: React.FC = () => {
-
     const navigate = useNavigate();
     const auth = useContext(AuthContext);
+
+    const [routeClicked, setRouteClicked] = useState('' as string);
+
+    const handleOnRouteClicked = (route: AppBarRoute) => {
+        setRouteClicked(route.name);
+        route.onRouteClicked?.();
+        navigate(route.path);
+    }
 
     const routeList : AppBarRoute[] = [
         {
             path: '/',
             name: 'Home'
+        },
+        {
+            path: '/search',
+            name: 'Search Cocktails'
         },
         {
             path: '/login',
@@ -36,8 +47,9 @@ export const CustomAppBar: React.FC = () => {
             </div>
             <div className="routeDisplay">
                 {routeList.map((route, index) => {
+                    const isSelected = routeClicked === route.name ? 'selected' : '';
                     return (
-                        <button key={index} className="nav-btn" onClick={() => {navigate(route.path)}}>{route.name}</button>
+                        <button key={index} className={`nav-btn ${isSelected}`} onClick={() => {handleOnRouteClicked(route)}}>{route.name}</button>
                     )
                 }
                 )}
