@@ -1,0 +1,41 @@
+.appbar_container {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.logoDisplay {
+  flex-shrink: 0;
+}
+
+.logo {
+  height: 50px;
+  margin-right: 20px;
+}
+
+.routeDisplay {
+  display: flex;
+  align-items: center;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  margin: 0 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: #575757;
+}
