@@ -5,14 +5,13 @@ import { createUser } from '../model/User';
 
 import './LoginPage.css'
 
-// TODO: Remove input change method from password otherwise password are stored in the state
-
 export const LoginPage: React.FC = () => {
     const [loginUsername, setLoginUsername] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
 
     const [registerUsername, setRegisterUsername] = useState('');
     const [registerPassword, setRegisterPassword] = useState('');
+    const [registerPasswordConfirm, setRegisterPasswordConfirm] = useState('');
 
     const auth = useContext(AuthContext);
     const navigate = useNavigate();
@@ -29,7 +28,17 @@ export const LoginPage: React.FC = () => {
 
     const handleRegisterSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        // TODO: A faire quand le back sera prêt
+        if(registerPassword !== registerPasswordConfirm) {
+            alert('Passwords do not match');
+            return;
+        }
+
+        // Clear inputs
+        setRegisterUsername('');
+        setRegisterPassword('');
+        setRegisterPasswordConfirm('');
+
+        alert('Registration complete')
     };
 
     const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,6 +60,7 @@ export const LoginPage: React.FC = () => {
                 <form onSubmit={handleRegisterSubmit}>
                     <input className='input inp_username' type="text" value={registerUsername} onChange={handleInputChange(setRegisterUsername)} placeholder="Username" required/>
                     <input className='input inp_password' type="password" value={registerPassword} onChange={handleInputChange(setRegisterPassword)} placeholder="Password" required/>
+                    <input className='input inp_password' type="password" value={registerPasswordConfirm} onChange={handleInputChange(setRegisterPasswordConfirm)} placeholder="Password" required/>
                     <button className='btn btn_register' type="submit">Register</button>
                 </form>
             </div>
