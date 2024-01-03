@@ -1,22 +1,28 @@
 import React, { useState } from "react";
 import './SearchBar.css';
+import { fetchCocktailByName } from "../../services/api/cocktailAPI";
 
-export const SearchBar : React.FC = () => {
+interface SearchBarProps {
+    onSearchSubmit: (cocktailName: string) => void;
+}
+
+export const SearchBar: React.FC<SearchBarProps> = ({ onSearchSubmit }) => {
 
     const [searchText, setSearchText] = useState<string>('');
 
-    const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (event: React.ChangeEvent<HTMLInputElement>) => {
-        setter(event.target.value);
+    const handleInputChange = (cocktailName: string) => {
+        setSearchText(cocktailName);
     }
 
-    const handleSearchSubmit = () => {
-        //TODO: Link with backend
-        alert('Search for ' + searchText);
+    const handleSearchSubmit = async () => {
+        onSearchSubmit(searchText);
     }
 
     return (
         <div className="search-bar-container">
-            <input type="text" placeholder="Search" className="search-bar" value={searchText} onChange={handleInputChange(setSearchText)}/>
+            <input type="text" placeholder="Enter Cocktail name" className="search-bar" onChange={(e) => {
+                handleInputChange(e.target.value);
+            }} />
             <button className="search-button" onClick={handleSearchSubmit}>Search</button>
         </div>
     )

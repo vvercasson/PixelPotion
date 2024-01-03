@@ -39,3 +39,19 @@ export const fetchRandomCocktails = async (num: number) => {
 
     return cocktailsList;
 }
+
+// fetch cocktail by name
+export const fetchCocktailByName = async (name: string) => {
+    const NAME_API_URL = API_URL + `search/name/${name}`;
+
+    const response = await fetch(NAME_API_URL);
+    if(!response.ok) throw new Error('Error fetching cocktail by name');
+
+    const data: ApiCocktailResponse = await response.json();
+
+    if(data && data.drinks && data.drinks.length > 0) {
+        const relevantData = mapCocktail(data);
+        return relevantData;
+    }
+    return [];
+}
