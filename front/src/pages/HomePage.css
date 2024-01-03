@@ -1,0 +1,16 @@
+/* HomePage.css */
+
+.random-cocktail-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .random-cocktail-list .cocktail-thumbnail {
+    margin: 10px;
+  }
+  
+  .welcome-text {
+    text-align: center;
+  }
+  

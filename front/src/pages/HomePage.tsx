@@ -4,9 +4,11 @@ import { User } from '../model/User';
 import { CustomAppBar } from '../components/AppBarComponents/CustomAppBar';
 import { fetchRandomCocktails } from '../services/api/cocktailAPI';
 import { Cocktail } from '../model/Cocktail';
-const WELCOME_TEXT:string = 'Welcome to Pixel Potion!';
+import { CocktailThumbnail } from '../components/CocktailComponents/CocktailThumbnail';
+import './HomePage.css';
 
 const HomePage: React.FC = () => {
+  const WELCOME_TEXT:string = 'Welcome to Pixel Potion!';
   const auth = useContext(AuthContext);
 
   const [welcomeText, setWelcomeText] = useState<string>(WELCOME_TEXT);
@@ -27,7 +29,7 @@ const HomePage: React.FC = () => {
             console.error("Failed to fetch cocktails:", error);
         }
     };
-    loadRandomCocktails();
+    // loadRandomCocktails();
   }, []);
 
   return (
@@ -36,9 +38,7 @@ const HomePage: React.FC = () => {
         <h1 className='welcome-text'>{welcomeText}</h1> 
         <div className='random-cocktail-list'>
           {cocktails.map((cocktail, index) => (
-            <div className='random-cocktail' key={index}>
-              <p>{cocktail.strDrink}</p>
-            </div>
+            <CocktailThumbnail key={index} cocktail={cocktail} />
           ))}
         </div>
     </div>

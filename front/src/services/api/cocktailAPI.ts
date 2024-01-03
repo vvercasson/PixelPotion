@@ -13,6 +13,7 @@ const mapCocktail = (data: ApiCocktailResponse) => {
         strDrink: drink.strDrink,
         strDrinkThumb: drink.strDrinkThumb,
         strInstructions: drink.strInstructions,
+        IngredientList : []
     }));
 
     return relevantData;
