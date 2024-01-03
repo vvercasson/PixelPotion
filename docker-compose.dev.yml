@@ -1,15 +1,15 @@
 version: '3.8'
 
 services:
-  front:
+  frontend:
     build:
-      context: front
+      context: frontend
       dockerfile: ./Dockerfile.dev
     ports:
       - "3000:80"
     volumes:
-      - ./front/src:/app/src
-  back:
+      - ./frontend/src:/app/src
+  backend:
     build:
       context: backend
       dockerfile: ./Dockerfile.dev
