@@ -21,4 +21,14 @@ router.get('/search/first-letter/:letter', async (req, res) => {
     }
 });
 
+// Route to fetch a random cocktail
+router.get('/random', async (req, res) => {
+    try {
+        const response = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+        res.json(response.data);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
 module.exports = router;
