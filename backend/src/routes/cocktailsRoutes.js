@@ -32,4 +32,14 @@ router.get('/random', async (req, res) => {
     }
 });
 
+// Route to fetch a cocktail by id
+router.get('/search/:id', async (req, res) => {
+    try {
+        const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${req.params.id}`);
+        res.json(response.data);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
 module.exports = router;

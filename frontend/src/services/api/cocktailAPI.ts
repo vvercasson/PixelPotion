@@ -34,7 +34,6 @@ const mapCocktail = (data: ApiCocktailResponse) => {
         strInstructions: drink.strInstructions,
         IngredientList: mapIngredient(drink)
     }));
-    console.log(relevantData);
 
     return relevantData;
 }
@@ -66,6 +65,22 @@ export const fetchCocktailByName = async (name: string) => {
 
     const response = await fetch(NAME_API_URL);
     if (!response.ok) throw new Error('Error fetching cocktail by name');
+
+    const data: ApiCocktailResponse = await response.json();
+
+    if (data && data.drinks && data.drinks.length > 0) {
+        const relevantData = mapCocktail(data);
+        return relevantData;
+    }
+    return [];
+}
+
+// fetch cocktail by id
+export const fetchCocktailById = async (id: string) => {
+    const ID_API_URL = API_URL + `search/${id}`;
+
+    const response = await fetch(ID_API_URL);
+    if (!response.ok) throw new Error('Error fetching cocktail by id');
 
     const data: ApiCocktailResponse = await response.json();
 
