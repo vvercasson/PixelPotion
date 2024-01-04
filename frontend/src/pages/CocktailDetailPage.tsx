@@ -36,11 +36,11 @@ export const CocktailDetailPage = () => {
                 <div className="cocktail-image-and-name">
                     <h1>{cocktail?.strDrink}</h1>
                     <img src={cocktail?.strDrinkThumb} alt={cocktail?.strDrink + ' logo'} />
-                    <p className="cocktail-instructions">{cocktail?.strInstructions}</p>
                 </div>
 
                 <div className="ingredients-list">
                     <IngredientListComp ingredients={cocktail?.IngredientList ?? []} />
+                    <p className="cocktail-instructions">{cocktail?.strInstructions}</p>
                 </div>
             </div>
         </>

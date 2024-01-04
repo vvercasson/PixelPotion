@@ -12,7 +12,7 @@ export const IngredientListComp: React.FC<IngredientListCompProps> = ({ ingredie
         <>
             <div className="ingredient-list-container">
                 {ingredients.map((ingredient, index) => {
-                    return <IngredientDisplayComp key={index} ingredient={ingredient} />
+                    return <IngredientDisplayComp key={index} ingredient={ingredient} number={index} />
                 })}
             </div>
         </>

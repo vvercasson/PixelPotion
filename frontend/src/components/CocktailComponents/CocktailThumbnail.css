@@ -4,7 +4,6 @@
   align-items: center;
   margin: 20px;
   padding: 10px;
-  border: 1px solid #ddd;
   border-radius: 10px;
   background-color: #f9f9f9;
   width: 200px
@@ -24,7 +23,15 @@
 }
 
 .virgin {
-  background-color: #72f436;
+  border: 0.5em solid #9198e5;
+  border-radius: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.alcoholic {
+  border: 0.5em solid #e66465;
+  border-radius: 1rem;
   font-size: 1rem;
   font-weight: bold;
 }
