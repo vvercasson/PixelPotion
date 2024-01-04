@@ -6,4 +6,5 @@ export interface Cocktail {
     strDrinkThumb: string;
     strInstructions: string;
     IngredientList: Ingredient[];
+    strAlcoholic: string;
 }

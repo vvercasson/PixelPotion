@@ -1,25 +1,30 @@
 .cocktail-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    width: 200px
-  }
-  
-  .cocktail_thumnnail {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px
-  }
-  
-  .cocktail_text {
-    margin-top: 10px;
-    text-align: center;
-    font-size: 1rem;
-    color: #333;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  width: 200px
+}
+
+.cocktail_thumnnail {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px
+}
+
+.cocktail_text {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 1rem;
+  color: #333;
+}
+
+.virgin {
+  background-color: #72f436;
+  font-size: 1rem;
+  font-weight: bold;
+}

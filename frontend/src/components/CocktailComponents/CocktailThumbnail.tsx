@@ -19,8 +19,16 @@ export const CocktailThumbnail: React.FC<CocktailThumbnailProps> = ({ cocktail }
         navigate(`/cocktail/${cocktailId}`);
     }
 
+    const isAlcoholic = (): boolean => {
+        if (cocktail.strAlcoholic === "Alcoholic") {
+            return true
+        } else {
+            return false
+        }
+    }
+
     return (
-        <div className="cocktail-container" onClick={() => { navigateToCocktailDetail(cocktail.idDrink) }}>
+        <div className={`cocktail-container ${isAlcoholic() ? 'alcoholic' : 'virgin'}`} onClick={() => { navigateToCocktailDetail(cocktail.idDrink) }}>
             <img className="cocktail_thumnnail" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
             <p className="cocktail_text">{cocktail.strDrink}</p>
         </div>
