@@ -23,6 +23,8 @@
 .routeDisplay {
   display: flex;
   align-items: center;
+  margin-right: 10px;
+  width: 100%;
 }
 
 .nav-btn {
@@ -42,4 +44,8 @@
 
 .selected {
   background-color: #575757;
+}
+
+.stick-right {
+  margin-left: auto;
 }

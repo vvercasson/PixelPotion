@@ -19,7 +19,7 @@ export const CustomAppBar: React.FC = () => {
         navigate(route.path);
     }
 
-    const routeList : AppBarRoute[] = [
+    const routeList: AppBarRoute[] = [
         {
             path: '/',
             name: 'Home'
@@ -32,7 +32,7 @@ export const CustomAppBar: React.FC = () => {
             path: '/login',
             name: 'Disconnect',
             onRouteClicked: () => {
-                auth?.signOut(() => {});
+                auth?.signOut(() => { });
             }
         }
     ];
@@ -40,12 +40,12 @@ export const CustomAppBar: React.FC = () => {
     return (
         <div className="appbar_container">
             <div className="logoDisplay">
-                <img src={Logo} alt="logo" className="logo" onClick={() => {navigate('/')}}/>
+                <img src={Logo} alt="logo" className="logo" onClick={() => { navigate('/') }} />
             </div>
             <div className="routeDisplay">
                 {routeList.map((route, index) => {
                     return (
-                        <button key={index} className={`nav-btn`} onClick={() => {handleOnRouteClicked(route)}}>{route.name}</button>
+                        <button key={index} className={`nav-btn ${route.name === 'Disconnect' ? 'stick-right' : ''}`} onClick={() => { handleOnRouteClicked(route) }}>{route.name}</button>
                     )
                 }
                 )}
