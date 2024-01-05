@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Cocktail } from "../model/Cocktail";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { fetchCocktailById } from "../services/api/cocktailAPI";
 import { IngredientListComp } from "../components/CocktailDetailComponents/IngredientsListComp";
 
@@ -9,7 +9,7 @@ import { CustomAppBar } from "../components/AppBarComponents/CustomAppBar";
 import { FavoriteButton } from "../components/CocktailDetailComponents/FavoriteButtonComp";
 
 
-export const CocktailDetailPage = () => {
+export const CocktailDetailPage: React.FC = () => {
 
     const { cocktailId } = useParams();
 

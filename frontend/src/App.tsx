@@ -7,6 +7,7 @@ import { LoginPage } from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import { SearchPage } from './pages/SearchPage';
 import { CocktailDetailPage } from './pages/CocktailDetailPage';
+import { FavoriteDisplayPage } from './pages/FavoriteDisplayPage';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path='/' element={<ProtectedRoute component={HomePage} />} />
             <Route path='/search' element={<ProtectedRoute component={SearchPage} />} />
+            <Route path='/favorites' element={<ProtectedRoute component={FavoriteDisplayPage} />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/cocktail/:cocktailId' element={<ProtectedRoute component={CocktailDetailPage} />} />
             <Route path='*' element={<LoginPage />} />

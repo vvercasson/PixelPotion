@@ -29,6 +29,10 @@ export const CustomAppBar: React.FC = () => {
             name: 'Search Cocktails'
         },
         {
+            path: '/favorites',
+            name: 'Favorites'
+        },
+        {
             path: '/login',
             name: 'Disconnect',
             onRouteClicked: () => {
