@@ -28,7 +28,7 @@ export const FavoriteDisplayPage: React.FC = () => {
                     return fetchedCocktail[0];
                 })
             );
-            // setIsLoading(false);
+            setIsLoading(false);
             setCocktailFavorites(cocktails);
             console.log("Cocktail favs loaded :", cocktailFavorites);
         }

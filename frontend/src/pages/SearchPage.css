@@ -17,3 +17,11 @@
     margin-bottom: 20px;
     box-sizing: border-box;
 }
+
+.searched-name {
+    color: var(--custom-red);
+}
+
+.title-text {
+    color: var(--custom-blue);
+}
