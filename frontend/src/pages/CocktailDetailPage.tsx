@@ -6,6 +6,7 @@ import { IngredientListComp } from "../components/CocktailDetailComponents/Ingre
 
 import './CocktailDetailPage.css';
 import { CustomAppBar } from "../components/AppBarComponents/CustomAppBar";
+import { FavoriteButton } from "../components/CocktailDetailComponents/FavoriteButtonComp";
 
 
 export const CocktailDetailPage = () => {
@@ -36,6 +37,7 @@ export const CocktailDetailPage = () => {
                 <div className="cocktail-image-and-name">
                     <h1>{cocktail?.strDrink}</h1>
                     <img src={cocktail?.strDrinkThumb} alt={cocktail?.strDrink + ' logo'} />
+                    <FavoriteButton cocktailId={cocktail?.idDrink ?? "-1"} />
                 </div>
 
                 <div className="ingredients-list">

@@ -6,6 +6,7 @@ import { fetchRandomCocktails } from '../services/api/cocktailAPI';
 import { Cocktail } from '../model/Cocktail';
 import { CocktailThumbnail } from '../components/CocktailComponents/CocktailThumbnail';
 import './HomePage.css';
+import { ColorHintsComp } from '../components/HomePageComponents/ColorHintsComp';
 
 const HomePage: React.FC = () => {
   const WELCOME_TEXT: string = 'Welcome to Pixel Potion!';
@@ -35,6 +36,7 @@ const HomePage: React.FC = () => {
     <div>
       <CustomAppBar />
       <h1 className='welcome-text'>{WELCOME_TEXT}</h1>
+      <ColorHintsComp />
       <div className='random-cocktail-list'>
         {cocktails.map((cocktail, index) => (
           <CocktailThumbnail key={index} cocktail={cocktail} />
