@@ -24,9 +24,10 @@
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  border-radius: 2em;
+  /* border-radius: 2em; */
   width: fit-content;
-  border: 1px solid #ccc;
+  /* border:  */
+  border-top: 1px solid var(--custom-white);
   align-items: center;
   justify-content: center;
 }

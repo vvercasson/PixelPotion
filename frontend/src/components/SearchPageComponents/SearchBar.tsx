@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import './SearchBar.css';
-import { fetchCocktailByName } from "../../services/api/cocktailAPI";
 
 interface SearchBarProps {
     onSearchSubmit: (cocktailName: string) => void;
