@@ -13,14 +13,7 @@
 }
 
 .red-color-hint {
-    border: 1px solid var(--custom-red);
     margin-right: 1em;
-    box-shadow: 0.1em 0.1em 0.3em var(--custom-red);
-}
-
-.blue-color-hint {
-    border: 1px solid var(--custom-blue);
-    box-shadow: 0.1em 0.1em 0.3em var(--custom-blue);
 }
 
 .square {
@@ -30,11 +23,11 @@
 }
 
 .red-square {
-    background-color: var(--custom-red);
+    border: 0.2em solid var(--custom-red);
 }
 
 .blue-square {
-    background-color: var(--custom-blue);
+    border: 0.2em solid var(--custom-blue);
 }
 
 
