@@ -1,6 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import { User } from '../model/User';
+import React, { useEffect, useState } from 'react';
 import { CustomAppBar } from '../components/AppBarComponents/CustomAppBar';
 import { fetchRandomCocktails } from '../services/api/cocktailAPI';
 import { Cocktail } from '../model/Cocktail';
@@ -10,15 +8,8 @@ import { ColorHintsComp } from '../components/HomePageComponents/ColorHintsComp'
 
 const HomePage: React.FC = () => {
   const WELCOME_TEXT: string = 'Welcome to Pixel Potion!';
-  const auth = useContext(AuthContext);
-
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
 
   const [cocktails, setCocktails] = useState<Cocktail[]>([]);
-
-  useEffect(() => {
-    setCurrentUser(auth?.user);
-  }, [auth]);
 
   const loadRandomCocktails = async (amount: number) => {
     try {
