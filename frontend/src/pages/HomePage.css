@@ -1,5 +1,9 @@
 /* HomePage.css */
 
+.homepage-main-container {
+  padding-top: 8em;
+}
+
 .random-cocktail-list {
     display: flex;
     flex-wrap: wrap;
@@ -12,5 +16,22 @@
   
   .welcome-text {
     text-align: center;
+    margin: 0;
   }
+
+.random-reco-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  border-radius: 2em;
+  width: fit-content;
+  border: 1px solid #ccc;
+  align-items: center;
+  justify-content: center;
+}
+
+.refresh-btn {
+  margin-bottom: 1em;
+}
   

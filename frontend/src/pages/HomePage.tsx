@@ -20,27 +20,34 @@ const HomePage: React.FC = () => {
     setCurrentUser(auth?.user);
   }, [auth]);
 
+  const loadRandomCocktails = async (amount: number) => {
+    try {
+      const randomCocktails = await fetchRandomCocktails(amount);
+      setCocktails(randomCocktails);
+    } catch (error) {
+      console.error("Failed to fetch cocktails:", error);
+    }
+  };
+
   useEffect(() => {
-    const loadRandomCocktails = async () => {
-      try {
-        const randomCocktails = await fetchRandomCocktails(2);
-        setCocktails(randomCocktails);
-      } catch (error) {
-        console.error("Failed to fetch cocktails:", error);
-      }
-    };
-    loadRandomCocktails();
+    loadRandomCocktails(3);
   }, []);
 
   return (
-    <div>
+    <div className='homepage-main-container'>
       <CustomAppBar />
       <h1 className='welcome-text'>{WELCOME_TEXT}</h1>
       <ColorHintsComp />
-      <div className='random-cocktail-list'>
-        {cocktails.map((cocktail, index) => (
-          <CocktailThumbnail key={index} cocktail={cocktail} />
-        ))}
+      <div className="random-reco-container">
+        <h3 className="random-cocktail-text">Random recommandations</h3>
+        <div className='random-cocktail-list'>
+          {cocktails.map((cocktail, index) => (
+            <CocktailThumbnail key={index} cocktail={cocktail} />
+          ))}
+        </div>
+        <button className="refresh-btn" onClick={() => {
+          loadRandomCocktails(3);
+        }}>Refresh</button>
       </div>
     </div>
   );

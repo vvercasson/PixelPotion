@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 20px;
+    /* padding: 10px; */
 }
 
 .color-hint {
@@ -12,26 +12,21 @@
     border-radius: 1em;
 }
 
-.red-color-hint {
-    margin-right: 1em;
+
+.blue {
+    color: var(--custom-blue);
 }
 
-.square {
-    width: 20px;
-    height: 20px;
-    border-radius: 0.3em;
+.red {
+    color: var(--custom-red);
 }
 
-.red-square {
-    border: 0.2em solid var(--custom-red);
-}
-
-.blue-square {
-    border: 0.2em solid var(--custom-blue);
+.before {
+    margin-right: 0.2em;
 }
 
 
-.color-text {
+.color-text, .hint-text {
     display: flex;
     margin:  0px 0.3em;
     flex-direction: row;
