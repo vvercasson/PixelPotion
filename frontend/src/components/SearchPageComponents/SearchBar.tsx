@@ -17,12 +17,19 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearchSubmit }) => {
         onSearchSubmit(searchText);
     }
 
+    const handleEnterKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            handleSearchSubmit();
+        }
+    };
+
     return (
         <div className="search-bar-container">
             <input type="text" placeholder="Enter Cocktail name" className="search-bar" onChange={(e) => {
                 handleInputChange(e.target.value);
-            }} />
-            <button className="search-button" onClick={handleSearchSubmit}>Search</button>
+            }}
+                onKeyDown={handleEnterKeyPress} />
+            <button accessKey='ENTER' className="search-button" onClick={handleSearchSubmit}>Search</button>
         </div>
     )
 };
