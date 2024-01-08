@@ -2,15 +2,13 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 
+const {cacheMiddleware } = require('./cache');
+
+
+
 // Seach by name
-router.get('/search/name/:name', async (req, res) => {
-    try {
-        const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${req.params.name}`);
-        res.json(response.data);
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
-});
+router.get('/search/name/:name', cacheMiddleware);
+
 
 // List all cocktails by first letter
 router.get('/search/first-letter/:letter', async (req, res) => {
@@ -33,13 +31,6 @@ router.get('/random', async (req, res) => {
 });
 
 // Route to fetch a cocktail by id
-router.get('/search/:id', async (req, res) => {
-    try {
-        const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${req.params.id}`);
-        res.json(response.data);
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
-});
+router.get('/search/:id', cacheMiddleware);
 
 module.exports = router;

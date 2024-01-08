@@ -13,3 +13,9 @@ services:
       dockerfile: ./Dockerfile.prod
     ports:
       - "3001:80"
+  redis:
+    build:
+      context: redis
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "6379:6379"

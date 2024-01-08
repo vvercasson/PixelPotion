@@ -17,3 +17,9 @@ services:
       - "3001:80"
     volumes:
       - ./backend/src:/app/src
+  redis:
+    build:
+      context: redis
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "6379:6379"
