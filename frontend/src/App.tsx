@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage';
 import { SearchPage } from './pages/SearchPage';
 import { CocktailDetailPage } from './pages/CocktailDetailPage';
 import { FavoriteDisplayPage } from './pages/FavoriteDisplayPage';
+import { CocktailCreationPage } from './pages/CocktailCreationPage';
 
 function App() {
 
@@ -16,10 +17,11 @@ function App() {
       <AuthProvider>
         <Router>
           <Routes>
+            <Route path='/login' element={<LoginPage />} />
             <Route path='/' element={<ProtectedRoute component={HomePage} />} />
             <Route path='/search' element={<ProtectedRoute component={SearchPage} />} />
             <Route path='/favorites' element={<ProtectedRoute component={FavoriteDisplayPage} />} />
-            <Route path='/login' element={<LoginPage />} />
+            <Route path='/creation' element={<ProtectedRoute component={CocktailCreationPage} />} />
             <Route path='/cocktail/:cocktailId' element={<ProtectedRoute component={CocktailDetailPage} />} />
             <Route path='*' element={<LoginPage />} />
           </Routes>

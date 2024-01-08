@@ -1,0 +1,7 @@
+.preview {
+    margin: 1em;
+    max-width: 15em; 
+    max-height: 15em; 
+    width: auto; 
+    height: auto;
+}

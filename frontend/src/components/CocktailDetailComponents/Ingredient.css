@@ -3,12 +3,13 @@
   gap: 10px;
   flex-basis: 50%;
   padding-left: 20px;
+  /* padding-right: 50px; */
 }
 
 .ingredient-item {
   display: flex;
   align-items: center;
-  border: 1px solid #ddd;
+  border: 0.15em solid white;
   border-radius: 1em;
 }
 

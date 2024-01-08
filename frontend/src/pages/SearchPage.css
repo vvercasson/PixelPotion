@@ -25,3 +25,14 @@
 .title-text {
     color: var(--custom-blue);
 }
+
+.select-radio-btn {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.select-radio-btn .select-inputs {
+    margin: 0 10px;
+}

@@ -91,3 +91,19 @@ export const fetchCocktailById = async (id: string) => {
     }
     return [];
 }
+
+// fetch cocktail by ingredient
+export const fetchCocktailByIngredient = async (ingredient: string) => {
+    // const INGREDIENT_API_URL = API_URL + `search/ingredient/${ingredient}`;
+
+    // const response = await fetch(INGREDIENT_API_URL);
+    // if (!response.ok) throw new Error('Error fetching cocktail by ingredient');
+
+    // const data: ApiCocktailResponse = await response.json();
+
+    // if (data && data.drinks && data.drinks.length > 0) {
+    //     const relevantData = mapCocktail(data);
+    //     return relevantData;
+    // }
+    return [];
+}
