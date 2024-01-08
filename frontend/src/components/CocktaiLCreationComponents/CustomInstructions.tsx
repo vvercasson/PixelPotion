@@ -12,7 +12,7 @@ export const CustomInstructions: React.FC<CustomInstructionsProps> = ({ onInstru
 
     const handleInstructionsChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setInstructions(e.target.value)
-        onInstructionsChange(e.target.value)
+        onInstructionsChange(instructions)
     }
 
     return (
