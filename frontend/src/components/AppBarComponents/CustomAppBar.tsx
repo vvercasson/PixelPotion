@@ -31,6 +31,9 @@ export const CustomAppBar: React.FC = () => {
         {
             path: '/favorites',
             name: 'Favorites'
+        }, {
+            path: '/creation',
+            name: 'Create a Cocktail'
         },
         {
             path: '/login',
