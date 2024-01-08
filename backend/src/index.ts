@@ -11,6 +11,8 @@ const PORT = 80;
 
 app.use(cors());
 
+app.use(express.json())
+
 app.use('/api/cocktails', cocktailRoutes);
 
 app.use('/api/users', usersRoutes);
