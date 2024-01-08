@@ -58,7 +58,7 @@ export const SearchPage: React.FC = () => {
                     {searchTypeInputs.map((type, index) => {
                         return (
                             <div className='select-inputs' key={index}>
-                                <input type="radio" id={type.searchType} name="search-type" value={type.searchType} checked={inputSelected?.id === type.id} onClick={() => { setInputSelected(type) }} />
+                                <input type="radio" id={type.searchType} name="search-type" value={type.searchType} defaultChecked={inputSelected?.id === type.id} onClick={() => { setInputSelected(type) }} />
                                 <label htmlFor={type.searchType}>{type.searchType}</label>
                             </div>
                         )

@@ -2,7 +2,9 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 
-const {cacheMiddleware } = require('./cache');
+const {
+    cacheMiddleware
+} = require('./cache');
 
 
 
@@ -24,6 +26,16 @@ router.get('/search/first-letter/:letter', async (req, res) => {
 router.get('/random', async (req, res) => {
     try {
         const response = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+        res.json(response.data);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
+// Route to fetch by ingredient name
+router.get('/search/ingredient/:name', async (req, res) => {
+    try {
+        const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${req.params.name}`);
         res.json(response.data);
     } catch (error) {
         res.status(500).send(error.message);

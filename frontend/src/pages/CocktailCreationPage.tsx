@@ -30,6 +30,7 @@ export const CocktailCreationPage: React.FC = () => {
             alert('This potion needs an image !')
             return
         }
+        console.log(instructions)
         alert('Potion created !')
     }
 
