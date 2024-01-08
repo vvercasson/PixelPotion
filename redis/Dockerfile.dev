@@ -1,0 +1,7 @@
+FROM redis:latest
+
+WORKDIR /app
+COPY redis.conf /app/redis/redis.conf
+#EXPOSE 3002
+CMD [ "redis-server", "/app/redis/redis.conf" ]
+# ENTRYPOINT ["redis-server"] ?
