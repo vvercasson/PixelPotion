@@ -1,7 +1,5 @@
 import { CocktailApiController } from "~/controller/cocktail.api.controller";
-import RedisCache from "~/middleware/redis.cache";
 const express = require('express');
-const axios = require('axios');
 const router = express.Router();
 
 // Seach by name
