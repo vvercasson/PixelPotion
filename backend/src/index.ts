@@ -3,9 +3,9 @@ const app = express();
 import cors from 'cors';
 
 // Import routers
-const cocktailRoutes = require('./routes/cocktailsRoutes.js');
+const cocktailRoutes = require('./routes/cocktailsRoutes.ts');
 
-const usersRoutes = require('./routes/usersRoutes.js');
+const usersRoutes = require('./routes/usersRoutes.ts');
 
 const PORT = 80;
 
