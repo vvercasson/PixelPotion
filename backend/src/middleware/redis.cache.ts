@@ -52,6 +52,4 @@ class RedisCache {
 
 }
 
-RedisCache.initialize();
-
 export default RedisCache;

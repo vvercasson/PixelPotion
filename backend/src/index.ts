@@ -1,21 +1,7 @@
-import express from 'express';
-const app = express();
-import cors from 'cors';
+import App from './app';
 
-// Import routers
-const cocktailRouter = require('./routes/cocktailsRoutes.ts');
+const app = new App(80);
 
-const usersRouter = require('./routes/usersRoutes.ts');
+app.initializeDb();
 
-const PORT = 80;
-
-app.use(cors());
-
-app.use('/api/cocktails', cocktailRouter);
-
-app.use('/api/users', usersRouter);
-
-// Listen
-app.listen(PORT, () => {
-    console.log(`Server is running on port : ${PORT}`);
-})
+app.listen();
