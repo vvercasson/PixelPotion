@@ -37,8 +37,9 @@ export const SearchPage: React.FC = () => {
             const searchedCocktails = await fetchCocktailByName(cocktailName);
             const searchCustomCocktails = await fetchCustomCocktails(cocktailName);
             setCocktailSearchedCustom(searchCustomCocktails);
-            setNotFoundText(`No cocktails found for ${cocktailName}`);
             setCocktailSearched(searchedCocktails);
+
+            setNotFoundText(`No cocktails found for ${cocktailName}`);
         } catch (error) {
             console.error("Failed to fetch cocktails:", error);
         }

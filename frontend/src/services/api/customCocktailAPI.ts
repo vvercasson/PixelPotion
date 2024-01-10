@@ -34,7 +34,7 @@ export const postCustomCocktail = async (userId: number, name: string, ingredien
     const payload = {
         userId,
         name,
-        ingredients,
+        ingredients: JSON.stringify(ingredients),
         instructions,
         image: base64Image
     };
