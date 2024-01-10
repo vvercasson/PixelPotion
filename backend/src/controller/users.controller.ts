@@ -42,4 +42,46 @@ export class UsersController {
             }
         });
     }
+
+    public static async getUserFavorites(req: Request, res: Response) {
+        const id = req.query.userId;
+
+        const query = 'SELECT * FROM cocktails WHERE userId = ?';
+
+        SQLiteDatabase.db.all(query, [id], (err: any, rows: any) => {
+            if (err) {
+                console.error(err.message);
+                res.status(500).json({ error: err.message });
+                return;
+            }
+            if (rows) {
+                console.log('Favorites found');
+                res.status(200).json({ message: 'Favorites found', favorites: rows });
+            } else {
+                console.log('No favorites found');
+                res.status(401).json({ message: 'No favorites found' });
+            }
+        });
+    }
+
+    public static async postUserFavorites(req: Request, res: Response) {
+        const { userId, cocktailId } = req.body;
+
+        const insertion = SQLiteDatabase.db.prepare('INSERT INTO cocktails (userId, cocktailId) VALUES (?, ?)');
+        insertion.run(userId, cocktailId);
+        insertion.finalize();
+
+        res.status(201).json({ message: 'Favorite added successfully' });
+    }
+
+    public static async deleteUserFavorites(req: Request, res: Response) {
+        const userId = req.query.userId;
+        const cocktailId = req.query.cocktailId;
+
+        const deletion = SQLiteDatabase.db.prepare('DELETE FROM cocktails WHERE userId = ? AND cocktailId = ?');
+        deletion.run(userId, cocktailId);
+        deletion.finalize();
+
+        res.status(201).json({ message: 'Favorite deleted successfully' });
+    }
 }

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { addFavorite, removeFavorite } from "../../services/api/usersAPI";
 
 interface FavoriteButtonProps {
     cocktailId: string;
@@ -24,6 +25,7 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = ({ cocktailId }) =>
                 const updatedFavorites = [...user?.cocktailFavoritesId, cocktailId];
                 user.cocktailFavoritesId = updatedFavorites;
                 setUserFavorites(updatedFavorites);
+                addFavorite(user.id, Number(cocktailId));
             }
         }
     };
@@ -33,6 +35,7 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = ({ cocktailId }) =>
             const updatedFavorites = user?.cocktailFavoritesId.filter(id => id !== cocktailId);
             user.cocktailFavoritesId = updatedFavorites;
             setUserFavorites(updatedFavorites);
+            removeFavorite(user.id, Number(cocktailId));
         }
     };
 

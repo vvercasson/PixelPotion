@@ -1,24 +1,13 @@
 export interface User {
-    id: string;
+    id: number;
     username: string;
     password: string;
     cocktailFavoritesId: string[];
 }
 
-export const createTestUser = () => {
+export const createUser = (id: number, username: string, password: string) => {
     const user: User = {
-        id: '1',
-        username: 'test',
-        password: 'test',
-        cocktailFavoritesId: [],
-    }
-
-    return user;
-}
-
-export const createUser = (username: string, password: string) => {
-    const user: User = {
-        id: '1',
+        id: id,
         username: username,
         password: password,
         cocktailFavoritesId: [],

@@ -37,9 +37,15 @@ export const LoginPage: React.FC = () => {
             alert('Passwords do not match');
             return;
         }
-        const user = createUser(registerUsername, registerPassword);
 
-        postUser(user);
+        postUser(registerUsername, registerPassword).then((user) => {
+            if (user && user.id) {
+                const newUser = createUser(user.id, user.username, user.password);
+                auth.signIn(newUser, () => {
+                    navigate('/');
+                });
+            }
+        });
 
         alert('Registration complete')
 

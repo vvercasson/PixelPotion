@@ -1,6 +1,7 @@
 .favorites-container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -11,6 +12,7 @@
 }
 
 .favorites-text {
+    padding-top: 120px;
     display: flex;
     justify-content: center;
     align-items: center;

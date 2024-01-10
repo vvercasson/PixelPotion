@@ -19,10 +19,8 @@ const mapUser = (data: ApiUserResponse) => {
 }
 
 // Post an user in the DB
-export const postUser = async (user: User) => {
+export const postUser = async (username: string, password: string): Promise<User | null> => {
     console.log('createUser');
-    const username = user.username;
-    const password = user.password;
     const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
@@ -33,11 +31,14 @@ export const postUser = async (user: User) => {
 
     if (!response.ok) throw new Error('Error creating user');
 
-    const data: ApiUserResponse = await response.json();
+    const data = await response.json();
 
-    if (data && data.users && data.users.length > 0) {
-        const relevantData = mapUser(data);
-        return relevantData;
+    if (data && data.user && data.user.id) {
+        console.log('User created successfully');
+        return data.user;
+    } else {
+        console.log('User creation unsuccessful');
+        return null;
     }
 }
 
@@ -67,5 +68,95 @@ export const fetchUser = async (username: string, password: string): Promise<Use
     } catch (error) {
         console.error('Error during login:', error);
         return null;
+    }
+};
+
+// Get an user's favorites from the DB
+export const fetchUserFavorites = async (userId: number): Promise<number[]> => {
+    try {
+        const response = await fetch(API_URL + 'favorites?userId=' + userId, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch favorites');
+        }
+
+        const data = await response.json();
+        if (data && data.favorites) {
+            // only return ids
+            const favorites = data.favorites.map((favorite: any) => favorite.cocktailId);
+            return favorites
+        } else {
+            console.log('No favorites found');
+            return [];
+        }
+    } catch (error) {
+        console.error('Error during fetching favorites:', error);
+        return [];
+    }
+};
+
+
+// Add a favorite to an user
+export const addFavorite = async (userId: number, cocktailId: number): Promise<boolean> => {
+    try {
+
+        const response = await fetch(API_URL + 'favorites/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ userId, cocktailId }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Error adding favorite');
+        }
+
+        const data = await response.json();
+        if (data) {
+            console.log(data)
+            console.log('Favorite added');
+            return true;
+        } else {
+            console.log('Favorite not added');
+            return false;
+        }
+    } catch (error) {
+        console.error('Error during adding favorite:', error);
+        return false;
+    }
+};
+
+// Remove a favorite from an user
+export const removeFavorite = async (userId: number, cocktailId: number): Promise<boolean> => {
+    try {
+        const response = await fetch(`${API_URL}favorites/remove?userId=${userId}&cocktailId=${cocktailId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+            // No body for DELETE request
+        });
+
+        if (!response.ok) {
+            throw new Error('Error removing favorite');
+        }
+
+        const data = await response.json();
+        if (data && data.message === 'Favorite deleted successfully') {
+            console.log('Favorite removed');
+            return true;
+        } else {
+            console.log('Favorite not removed');
+            return false;
+        }
+    } catch (error) {
+        console.error('Error during removing favorite:', error);
+        return false;
     }
 };

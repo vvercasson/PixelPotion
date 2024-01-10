@@ -7,6 +7,7 @@ import './HomePage.css';
 import { ColorHintsComp } from '../components/HomePageComponents/ColorHintsComp';
 
 const HomePage: React.FC = () => {
+
   const WELCOME_TEXT: string = 'Welcome to Pixel Potion!';
 
   const [cocktails, setCocktails] = useState<Cocktail[]>([]);

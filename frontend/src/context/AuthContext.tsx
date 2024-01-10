@@ -1,5 +1,6 @@
 import React, { useState, createContext, ReactNode } from 'react';
 import { User } from '../model/User';
+import { fetchUserFavorites } from '../services/api/usersAPI';
 
 type AuthContextType = {
   user: User | null;
@@ -9,19 +10,28 @@ type AuthContextType = {
 
 export const AuthContext = createContext<AuthContextType>({
   user: null,
-  signIn: () => {},
-  signOut: () => {} 
+  signIn: () => { },
+  signOut: () => { }
 });
 
 type AuthProviderProps = {
   children: ReactNode;
 };
 
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children } : AuthProviderProps) => {
-  const [user, setUser] = useState<User | null>(null); // null signifie pas connecté
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }: AuthProviderProps) => {
+  const [user, setUser] = useState<User | null>(null);
 
-  const signIn = (newUser: User, callback: () => void) => {
+  const signIn = async (newUser: User, callback: () => void) => {
     setUser(newUser);
+    try {
+      const favorites = await fetchUserFavorites(Number(newUser.id));
+      newUser.cocktailFavoritesId = favorites.map(String);
+      setUser(newUser);
+      console.log(newUser);
+
+    } catch (error) {
+
+    }
     callback();
   };
 
@@ -33,8 +43,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children } : AuthPro
   const value = { user, signIn, signOut };
 
   return (
-        <AuthContext.Provider value={value}>
-            {children}
-        </AuthContext.Provider>
-    );
+    <AuthContext.Provider value={value}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
