@@ -19,6 +19,7 @@ export class UserModel extends Model<IUser> {
             },
             username: {
                 type: DataTypes.STRING,
+                unique: true,
                 allowNull: false
             },
             password: {

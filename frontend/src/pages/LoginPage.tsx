@@ -39,15 +39,13 @@ export const LoginPage: React.FC = () => {
         }
 
         postUser(registerUsername, registerPassword).then((user) => {
-            if (user && user.id) {
-                const newUser = createUser(user.id, user.username, user.password);
-                auth.signIn(newUser, () => {
-                    navigate('/');
-                });
+            if (user) {
+                alert('Registration complete')
             }
+        }).catch((error) => {
+            alert(error);
         });
 
-        alert('Registration complete')
 
         // Clear inputs
         setRegisterUsername('');

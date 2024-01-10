@@ -1,3 +1,4 @@
+import { error } from "console";
 import { Request, Response } from "express";
 import { SQLiteDatabase } from "~/database/database.config";
 const path = require('path');
@@ -12,12 +13,39 @@ export class UsersController {
         console.log('postUser');
         const { username, password } = req.body;
 
-        const insertion = SQLiteDatabase.db.prepare('INSERT INTO users (username, password) VALUES (?, ?)');
-        insertion.run(username, password);
-        insertion.finalize();
+        try {
+            const insertion = SQLiteDatabase.db.prepare('INSERT INTO users (username, password) VALUES (?, ?)');
 
-        res.status(201).json({ message: 'User created successfully' });
+            insertion.run(username, password, function (error: any) {
+                if (error) {
+                    console.error('Error during insertion:', error);
+
+                    if (error.code === 'SQLITE_CONSTRAINT' && error.errno === 19) {
+                        res.status(409).json({ message: 'Username already exists' });
+                    } else {
+                        res.status(500).json({ message: 'Internal server error' });
+                    }
+                    return;
+                }
+
+                const query = SQLiteDatabase.db.prepare('SELECT * FROM users WHERE username = ?');
+                const user = query.get(username);
+                query.finalize();
+
+                if (user) {
+                    res.status(201).json({ user: user, message: 'User created successfully' });
+                } else {
+                    res.status(500).json({ message: 'Internal server error' });
+                }
+            });
+
+            insertion.finalize();
+        } catch (error: any) {
+            console.error('Error:', error);
+            res.status(500).json({ message: 'Internal server error' });
+        }
     }
+
 
     public static async getUser(req: Request, res: Response) {
         const { username, password } = req.body;

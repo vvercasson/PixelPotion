@@ -25,6 +25,8 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = ({ cocktailId }) =>
                 const updatedFavorites = [...user?.cocktailFavoritesId, cocktailId];
                 user.cocktailFavoritesId = updatedFavorites;
                 setUserFavorites(updatedFavorites);
+                console.log("userId:", user.id);
+
                 addFavorite(user.id, Number(cocktailId));
             }
         }

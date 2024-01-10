@@ -29,11 +29,12 @@ export const postUser = async (username: string, password: string): Promise<User
         body: JSON.stringify({ username, password }),
     });
 
+    if (response.status === 409) throw new Error('User already exists');
     if (!response.ok) throw new Error('Error creating user');
 
     const data = await response.json();
 
-    if (data && data.user && data.user.id) {
+    if (data && data.user) {
         console.log('User created successfully');
         return data.user;
     } else {
@@ -104,6 +105,7 @@ export const fetchUserFavorites = async (userId: number): Promise<number[]> => {
 // Add a favorite to an user
 export const addFavorite = async (userId: number, cocktailId: number): Promise<boolean> => {
     try {
+        console.log('addFavorite ' + userId + ' ' + cocktailId);
 
         const response = await fetch(API_URL + 'favorites/add', {
             method: 'POST',
