@@ -21,12 +21,14 @@ const mapUser = (data: ApiUserResponse) => {
 // Post an user in the DB
 export const postUser = async (user: User) => {
     console.log('createUser');
+    const username = user.username;
+    const password = user.password;
     const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(user)
+        body: JSON.stringify({ username, password }),
     });
 
     if (!response.ok) throw new Error('Error creating user');

@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "@types/node": "^20.10.5"
+  },
+  "dependencies": {
+    "@types/sequelize": "^4.28.19"
   }
 }

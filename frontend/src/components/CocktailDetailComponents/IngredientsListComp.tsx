@@ -2,7 +2,6 @@ import { Ingredient } from "../../model/Ingredient";
 import { IngredientDisplayComp } from "./IngredientDisplayComp";
 
 import './Ingredient.css';
-import { useEffect } from "react";
 
 interface IngredientListCompProps {
     ingredients: Ingredient[];

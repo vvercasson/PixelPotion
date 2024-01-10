@@ -41,7 +41,7 @@ export const CocktailDetailPage: React.FC = () => {
                 </div>
 
                 <div className="ingredients-list">
-                    <IngredientListComp ingredients={cocktail?.IngredientList ?? []} />
+                    <IngredientListComp ingredients={cocktail?.IngredientList ?? []} editable={false} />
                     <p className="cocktail-instructions">{cocktail?.strInstructions}</p>
                 </div>
             </div>
