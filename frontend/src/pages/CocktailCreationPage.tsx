@@ -1,17 +1,24 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import './CocktailCreationPage.css'
 import { CustomAppBar } from '../components/AppBarComponents/CustomAppBar'
 import { ImageInput } from '../components/CocktaiLCreationComponents/ImageInput'
 import { CustomInstructions } from '../components/CocktaiLCreationComponents/CustomInstructions'
 import { CustomCocktailIngredients } from '../components/CocktaiLCreationComponents/CustomCocktailIngredients'
 import { Ingredient } from '../model/Ingredient'
+import { CustomCocktail, createCustomCocktail } from '../model/CustomCocktail'
+import { AuthContext } from '../context/AuthContext'
+import { postCustomCocktail } from '../services/api/customCocktailAPI'
 
 export const CocktailCreationPage: React.FC = () => {
 
-    const [cocktailName, setCocktailName] = React.useState<string>('')
-    const [ingredients, setIngredients] = React.useState<Ingredient[]>([])
-    const [instructions, setInstructions] = React.useState<string>('')
-    const [image, setImage] = React.useState<File>()
+    // get user id from context
+    const { user } = useContext(AuthContext)
+
+
+    const [cocktailName, setCocktailName] = useState<string>('')
+    const [ingredients, setIngredients] = useState<Ingredient[]>([])
+    const [instructions, setInstructions] = useState<string>('')
+    const [image, setImage] = useState<File>()
 
     function checkValidFields() {
         if (cocktailName === '') {
@@ -30,8 +37,6 @@ export const CocktailCreationPage: React.FC = () => {
             alert('This potion needs an image !')
             return
         }
-        console.log(instructions)
-        alert('Potion created !')
     }
 
     function handleNameChange(e: React.ChangeEvent<HTMLInputElement>): void {
@@ -40,6 +45,10 @@ export const CocktailCreationPage: React.FC = () => {
 
     function handlePublish(): void {
         checkValidFields()
+        if (user && user.id && image) {
+            console.log('publishing cocktail');
+            postCustomCocktail(user.id, cocktailName, ingredients, instructions, image);
+        }
     }
 
     // CALLBACKs

@@ -3,6 +3,7 @@ import { Database } from 'sqlite3';
 import { Sequelize } from 'sequelize';
 import { UserModel } from './db_models/User';
 import { CocktailFavoriteModel } from './db_models/CocktailFavorite';
+import { HomemadeCocktailModel } from './db_models/HomemadeCocktails';
 
 export class SQLiteDatabase {
     private static readonly FILE_PATH: string = './database.sqlite';
@@ -32,5 +33,6 @@ export class SQLiteDatabase {
     public static createModels() {
         UserModel.defineUserModel(SQLiteDatabase.sequelize);
         CocktailFavoriteModel.defineCocktailModel(SQLiteDatabase.sequelize);
+        HomemadeCocktailModel.defineHomemadeCocktailModel(SQLiteDatabase.sequelize);
     }
 }

@@ -6,6 +6,8 @@ import { fetchCocktailByIngredient, fetchCocktailByName } from "../services/api/
 import { CocktailThumbnail } from "../components/CocktailComponents/CocktailThumbnail";
 import { searchTypeInputs, SearchTypeInput } from "../model/SearchTypeInput";
 import './SearchPage.css';
+import { fetchCustomCocktails } from "../services/api/customCocktailAPI";
+import { CustomCocktail } from "../model/CustomCocktail";
 
 
 export const SearchPage: React.FC = () => {
@@ -13,6 +15,7 @@ export const SearchPage: React.FC = () => {
     const [notFoundText, setNotFoundText] = useState<string>("");
 
     const [cocktailSearched, setCocktailSearched] = useState<Cocktail[]>([]);
+    const [cocktailSearchedCustom, setCocktailSearchedCustom] = useState<CustomCocktail[]>([]);
 
 
     const [inputSelected, setInputSelected] = useState<SearchTypeInput>(searchTypeInputs[0]);
@@ -32,6 +35,8 @@ export const SearchPage: React.FC = () => {
     const searchCocktailByName = async (cocktailName: string) => {
         try {
             const searchedCocktails = await fetchCocktailByName(cocktailName);
+            const searchCustomCocktails = await fetchCustomCocktails(cocktailName);
+            setCocktailSearchedCustom(searchCustomCocktails);
             setNotFoundText(`No cocktails found for ${cocktailName}`);
             setCocktailSearched(searchedCocktails);
         } catch (error) {
@@ -66,9 +71,12 @@ export const SearchPage: React.FC = () => {
                 </div>
                 <SearchBar onSearchSubmit={handleSearchSubmit} />
                 <div className="cocktails-list">
-                    {cocktailSearched.length === 0 && <h2 className="searched-name">{notFoundText} </h2>}
+                    {(cocktailSearched.length === 0 && cocktailSearchedCustom.length === 0) && <h2 className="searched-name">{notFoundText} </h2>}
                     {cocktailSearched.map((cocktail, index) => (
                         <CocktailThumbnail cocktail={cocktail} key={index} />
+                    ))}
+                    {cocktailSearchedCustom.map((cocktail, index) => (
+                        <CocktailThumbnail cocktail={{} as Cocktail} customCocktail={cocktail} key={index} />
                     ))}
                 </div>
             </div>
