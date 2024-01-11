@@ -8,11 +8,13 @@ import { Ingredient } from '../model/Ingredient'
 import { CustomCocktail, createCustomCocktail } from '../model/CustomCocktail'
 import { AuthContext } from '../context/AuthContext'
 import { postCustomCocktail } from '../services/api/customCocktailAPI'
+import { useNavigate } from 'react-router-dom'
 
 export const CocktailCreationPage: React.FC = () => {
 
     // get user id from context
     const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
 
 
     const [cocktailName, setCocktailName] = useState<string>('')
@@ -48,6 +50,8 @@ export const CocktailCreationPage: React.FC = () => {
         if (user && user.id && image) {
             console.log('publishing cocktail');
             postCustomCocktail(user.id, cocktailName, ingredients, instructions, image);
+            alert('Your potion has been published !')
+            navigate('/')
         }
     }
 
