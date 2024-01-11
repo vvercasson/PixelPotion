@@ -6,6 +6,7 @@
   align-items: center;
   width: 100%;
   min-height: 100vh;
+  flex-direction: column;
 }
 
 .login_container,
@@ -54,4 +55,9 @@
 .btn_register {
   background-color: #28a745;
   color: white;
+}
+
+.login_redirect {
+  margin-top: 10px;
+  text-align: center;
 }
