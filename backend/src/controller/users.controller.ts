@@ -1,22 +1,20 @@
-import { error } from "console";
 import { Request, Response } from "express";
 import { SQLiteDatabase } from "~/database/database.config";
-const path = require('path');
-const sqlite3 = require('sqlite3').verbose();
+import bcrypt from 'bcrypt';
 
-// const dbPath = path.resolve(__dirname, '../database/database.sqlite');
-// const db = new sqlite3.Database(dbPath);
 
 export class UsersController {
 
     public static async postUser(req: Request, res: Response) {
         console.log('postUser');
         const { username, password } = req.body;
+        const encryptedPassword = await bcrypt.hash(password, 10);
+
 
         try {
             const insertion = SQLiteDatabase.db.prepare('INSERT INTO users (username, password) VALUES (?, ?)');
 
-            insertion.run(username, password, function (error: any) {
+            insertion.run(username, encryptedPassword, function (error: any) {
                 if (error) {
                     console.error('Error during insertion:', error);
 
@@ -52,16 +50,16 @@ export class UsersController {
 
         console.log('Query now');
 
-        const query = 'SELECT * FROM users WHERE username = ? AND password = ?';
+        const query = 'SELECT * FROM users WHERE username = ?';
 
 
-        SQLiteDatabase.db.get(query, [username, password], (err: any, row: any) => {
+        SQLiteDatabase.db.get(query, [username], (err: any, row: any) => {
             if (err) {
                 console.error(err.message);
                 res.status(500).json({ error: err.message });
                 return;
             }
-            if (row) {
+            if (row && bcrypt.compareSync(password, row.password)) {
                 console.log('User found');
                 res.status(200).json({ message: 'Authentication successful', user: row });
             } else {
