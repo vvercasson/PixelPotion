@@ -11,7 +11,14 @@ export const fetchCustomCocktails = async (name: string): Promise<CustomCocktail
     const data = await response.json();
 
     if (data && data.customCocktails && data.customCocktails.length > 0) {
-        return data.customCocktails;
+        const customCocktails = data.customCocktails.map((cocktail: { ingredients: string; }) => {
+            if (cocktail.ingredients) {
+                cocktail.ingredients = JSON.parse(cocktail.ingredients);
+            }
+            return cocktail;
+        });
+
+        return customCocktails;
     } else {
         return [];
     }
@@ -59,3 +66,39 @@ export const postCustomCocktail = async (userId: number, name: string, ingredien
         return null;
     }
 }
+
+export const fetchCustomCocktailById = async (id: string): Promise<CustomCocktail | null> => {
+    const response = await fetch(API_URL + id);
+    if (response.status === 404) return null;
+    if (!response.ok) throw new Error('Error fetching custom cocktail');
+
+    const data = await response.json();
+
+    if (data && data.customCocktail) {
+        data.customCocktail.ingredients = JSON.parse(data.customCocktail.ingredients);
+        return data.customCocktail;
+    } else {
+        return null;
+    }
+};
+
+export const fetchCustomCocktailsByUserId = async (userId: number): Promise<CustomCocktail[]> => {
+    const response = await fetch(API_URL + `user/${userId}`);
+    if (response.status === 404) return [];
+    if (!response.ok) throw new Error('Error fetching custom cocktails');
+
+    const data = await response.json();
+
+    if (data && data.customCocktails && data.customCocktails.length > 0) {
+        const customCocktails = data.customCocktails.map((cocktail: { ingredients: string; }) => {
+            if (cocktail.ingredients) {
+                cocktail.ingredients = JSON.parse(cocktail.ingredients);
+            }
+            return cocktail;
+        });
+
+        return customCocktails;
+    } else {
+        return [];
+    }
+};

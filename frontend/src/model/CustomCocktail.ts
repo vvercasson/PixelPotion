@@ -1,7 +1,7 @@
 import { Ingredient } from "./Ingredient";
 
 export interface CustomCocktail {
-    id: number;
+    id: string;
     userId: number;
     name: string;
     ingredients: Ingredient[];
@@ -9,7 +9,7 @@ export interface CustomCocktail {
     image: string;
 }
 
-export function createCustomCocktail(id: number, userId: number, name: string, ingredients: Ingredient[], instructions: string, image: string): CustomCocktail {
+export function createCustomCocktail(id: string, userId: number, name: string, ingredients: Ingredient[], instructions: string, image: string): CustomCocktail {
     return {
         id,
         userId,

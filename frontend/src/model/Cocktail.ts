@@ -8,3 +8,12 @@ export interface Cocktail {
     IngredientList: Ingredient[];
     strAlcoholic: string;
 }
+
+export const emptyCocktail = {
+    idDrink: '',
+    strDrink: '',
+    strDrinkThumb: '',
+    strInstructions: '',
+    IngredientList: [],
+    strAlcoholic: ''
+} as Cocktail;

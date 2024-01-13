@@ -9,6 +9,8 @@ import { SearchPage } from './pages/SearchPage';
 import { CocktailDetailPage } from './pages/CocktailDetailPage';
 import { FavoriteDisplayPage } from './pages/FavoriteDisplayPage';
 import { CocktailCreationPage } from './pages/CocktailCreationPage';
+import { UsersCocktails } from './pages/UsersCocktails';
+import { CustomCocktailDetail } from './pages/CustomCocktailDetail';
 
 function App() {
 
@@ -23,6 +25,8 @@ function App() {
             <Route path='/favorites' element={<ProtectedRoute component={FavoriteDisplayPage} />} />
             <Route path='/creation' element={<ProtectedRoute component={CocktailCreationPage} />} />
             <Route path='/cocktail/:cocktailId' element={<ProtectedRoute component={CocktailDetailPage} />} />
+            <Route path='/usersCocktails' element={<ProtectedRoute component={UsersCocktails} />} />
+            <Route path='/customCocktail/:cocktailId' element={<ProtectedRoute component={CustomCocktailDetail} />} />
             <Route path='*' element={<LoginPage />} />
           </Routes>
         </Router>

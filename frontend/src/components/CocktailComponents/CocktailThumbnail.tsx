@@ -22,7 +22,8 @@ export const CocktailThumbnail: React.FC<CocktailThumbnailProps> = ({ cocktail, 
             navigate(`/cocktail/${cocktailId}`);
         }
         else {
-            alert("Custom cocktails are not supported yet")
+            console.log("custom cocktail id: ", cocktailId);
+            navigate(`/customCocktail/${cocktailId}`);
         }
     }
 
@@ -38,7 +39,7 @@ export const CocktailThumbnail: React.FC<CocktailThumbnailProps> = ({ cocktail, 
 
     if (customCocktail) {
         return (
-            <div className={`cocktail-container`} onClick={() => { navigateToCocktailDetail(cocktail.idDrink) }}>
+            <div className={`cocktail-container`} onClick={() => { navigateToCocktailDetail(customCocktail.id) }}>
                 {<img className="cocktail_thumnnail" src={`${customCocktail.image}`} alt={customCocktail.name} />}
                 <p className="cocktail_text">{customCocktail.name}</p>
             </div>
