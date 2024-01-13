@@ -85,7 +85,7 @@ export class UsersController {
                 res.status(200).json({ message: 'Favorites found', favorites: rows });
             } else {
                 console.log('No favorites found');
-                res.status(401).json({ message: 'No favorites found' });
+                res.status(404).json({ message: 'No favorites found' });
             }
         });
     }

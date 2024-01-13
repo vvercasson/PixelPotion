@@ -35,16 +35,16 @@ export class App {
                 info: {
                     title: "PixelPotion API",
                     version: "0.1",
-                    description: "An API to access a collection of cocktail recipes. It provides functionalities to search for cocktails by name, ingredient, ID, and retrieve random information.",
+                    description: "An API to access a collection of cocktail recipes. It provides functionalities to search for cocktails by name, ingredient, ID from thecocktaildb.com.",
                 },
+                servers: [
+                    {
+                        url: 'http://localhost:3000/',
+                        description: 'Local PixelPotion'
+                    },
+                ],
             },
-            /* servers: [
-                {
-                    url: 'http://localhost:3001',
-                    description: 'backend server for PixelPotion'
-                }
-            ], */
-            apis: ["./routes/*.ts", "./models/*.ts", "./controller/*.ts"],
+            apis: ["./src/routes/*.ts", "./src/models/*.ts", "./src/controller/*.ts"],
         };
 
         const swaggerSpec = swaggerJsDoc(options);
