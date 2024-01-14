@@ -2,21 +2,21 @@ import { User } from '../../model/User';
 
 const API_URL = 'http://localhost:3001/api/users/';
 
-interface ApiUserResponse {
-    users: User[];
-}
+// interface ApiUserResponse {
+//     users: User[];
+// }
 
 // Map the API response to the application state
-const mapUser = (data: ApiUserResponse) => {
-    const relevantData = data.users.map(user => ({
-        id: user.id,
-        username: user.username,
-        password: user.password,
-        cocktailFavoritesId: []
-    }));
+// const mapUser = (data: ApiUserResponse) => {
+//     const relevantData = data.users.map(user => ({
+//         id: user.id,
+//         username: user.username,
+//         password: user.password,
+//         cocktailFavoritesId: []
+//     }));
 
-    return relevantData;;
-}
+//     return relevantData;;
+// }
 
 // Post an user in the DB
 export const postUser = async (username: string, password: string): Promise<User | null> => {

@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { createUser } from '../model/User';
 
 import { fetchUser, postUser } from '../services/api/usersAPI';
 

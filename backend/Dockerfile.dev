@@ -3,7 +3,6 @@ FROM node
 WORKDIR /app
 COPY package*.json .
 RUN npm install
-RUN npm install --save-dev @types/swagger-jsdoc @types/swagger-ui-express
 COPY . .
 EXPOSE 80
 CMD npm run dev
