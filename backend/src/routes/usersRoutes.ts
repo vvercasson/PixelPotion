@@ -6,7 +6,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /:
+ * /api/users/:
  *   post:
  *     summary: Create a user account.
  *     responses:
@@ -22,7 +22,7 @@ router.post('/', UsersController.postUser);
 
 /**
  * @swagger
- * /login:
+ * /api/users/login:
  *   post:
  *     summary: Authenticate a user.
  *     responses:
@@ -37,7 +37,7 @@ router.post('/login', UsersController.getUser)
 
 /**
  * @swagger
- * /favorites:
+ * /api/users/favorites:
  *   get:
  *     summary: Retrieve the favorite cocktails of the connected user.
  *     responses:
@@ -52,7 +52,7 @@ router.get('/favorites', UsersController.getUserFavorites);
 
 /**
  * @swagger
- * /favorites/add:
+ * /api/users/favorites/add:
  *   post:
  *     summary: Add a new cocktail to the list of favorites for the connected user.
  *     responses:
@@ -63,7 +63,7 @@ router.post('/favorites/add', UsersController.postUserFavorites);
 
 /**
  * @swagger
- * /favorites/remove:
+ * /api/users/favorites/remove:
  *   delete:
  *     summary: Remove a cocktail from the list of favorites for the connected user.
  *     responses:

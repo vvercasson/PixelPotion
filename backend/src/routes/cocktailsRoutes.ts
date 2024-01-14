@@ -4,7 +4,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /search/name/{name}:
+ * /api/cocktails/search/name/{name}:
  *   get:
  *     summary: Search cocktails by name.
  *     parameters:
@@ -21,7 +21,7 @@ router.get('/search/name/:name', CocktailApiController.getCocktailsByName);
 
 /** 
  * @swagger
- * /search/{id}:
+ * /api/cocktails/search/{id}:
  *   get:
  *     summary: Search cocktail by id.
  *     parameters:
@@ -38,7 +38,7 @@ router.get('/search/:id', CocktailApiController.getCocktailById);
 
 /** 
  * @swagger
- * /search/first-letter/{letter}:
+ * /api/cocktails/search/first-letter/{letter}:
  *   get:
  *     summary: Search cocktails by first letter.
  *     parameters:
@@ -55,7 +55,7 @@ router.get('/search/first-letter/:letter', CocktailApiController.getCocktailsByF
 
 /** 
  * @swagger
- * /search/ingredient/{name}:
+ * /api/cocktails/search/ingredient/{name}:
  *   get:
  *     summary: Search cocktails by ingredient name.
  *     parameters:
@@ -72,7 +72,7 @@ router.get('/search/ingredient/:name', CocktailApiController.getCocktailsByIngre
 
 /** 
  * @swagger
- * /search/random:
+ * /api/cocktails/search/random:
  *   get:
  *     summary: Get a random cocktail.
  *     responses:

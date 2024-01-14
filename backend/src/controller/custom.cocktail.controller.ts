@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import axios from "axios";
 import { SQLiteDatabase } from "~/database/database.config";
 
 export class CustomCocktailController {
@@ -89,6 +88,7 @@ export class CustomCocktailController {
             res.status(201).json({ message: 'Custom cocktail created successfully' });
         } catch (error) {
             console.log(error);
+            res.status(500).json({ error: error });
         }
     }
 }
