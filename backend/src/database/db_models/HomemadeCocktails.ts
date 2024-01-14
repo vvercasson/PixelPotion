@@ -7,6 +7,7 @@ interface IIngredient {
 
 interface IHomemadeCocktail {
     userId: number;
+    id: number;
     name: string;
     ingredients: IIngredient[];
     instructions: string;
@@ -14,6 +15,7 @@ interface IHomemadeCocktail {
 }
 
 export class HomemadeCocktailModel extends Model<IHomemadeCocktail> implements IHomemadeCocktail {
+    public id!: number;
     public userId!: number;
     public name!: string;
     public ingredients!: IIngredient[];
@@ -29,6 +31,11 @@ export class HomemadeCocktailModel extends Model<IHomemadeCocktail> implements I
                     model: 'users',
                     key: 'id',
                 }
+            },
+            id: {
+                type: DataTypes.INTEGER,
+                autoIncrement: true,
+                primaryKey: true
             }
             , name: {
                 type: DataTypes.STRING,

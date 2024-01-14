@@ -50,6 +50,7 @@ export const SearchPage: React.FC = () => {
             const searchedCocktails = await fetchCocktailByIngredient(ingredient);
             setNotFoundText(`No cocktails containing \'${ingredient}\' was found`);
             setCocktailSearched(searchedCocktails);
+            setCocktailSearchedCustom([]);
         } catch (error) {
             console.error("Failed to fetch cocktails:", error);
         }

@@ -33,4 +33,40 @@ router.get('/search/name/:name', CustomCocktailController.getCustomCocktailsByNa
  */
 router.post('/', CustomCocktailController.postCustomCocktail);
 
+
+/**
+ * @swagger
+ * /:
+ *   get:
+ *     summary: Get all custom cocktails from an user.
+ *    parameters:
+ *      - in: path
+ *       name: userId
+ *      description: Id of the user.
+ *     responses:
+ *       '200':
+ *         description: Return a list of all custom cocktails.
+ *       '500':
+ *         description: Internal Server Error.
+ */
+router.get('/user/:userId', CustomCocktailController.getCustomCocktailsByUserId);
+
+/**
+ * @swagger
+ * /:
+ *   get:
+ *     summary: Get the custom cocktail with the correspondign id.
+ *   parameters:
+ *     - in: path
+ *      name: id
+ *     description: Id of the custom cocktail
+ *     responses:
+ *       '200':
+ *         description: Return a list of all custom cocktails.
+ *       '500':
+ *         description: Internal Server Error.
+ */
+router.get('/:id', CustomCocktailController.getCustomCocktailById);
+
+
 module.exports = router;
