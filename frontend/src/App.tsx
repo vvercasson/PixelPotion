@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route }
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './pages/ProtectedPage';
 import { LoginPage } from './pages/LoginPage';
+import { RegisterPage } from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import { SearchPage } from './pages/SearchPage';
 import { CocktailDetailPage } from './pages/CocktailDetailPage';
@@ -17,6 +18,7 @@ function App() {
       <AuthProvider>
         <Router>
           <Routes>
+            <Route path='/register' element={<RegisterPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/' element={<ProtectedRoute component={HomePage} />} />
             <Route path='/search' element={<ProtectedRoute component={SearchPage} />} />
