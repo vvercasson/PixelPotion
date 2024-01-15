@@ -61,7 +61,9 @@ export class UsersController {
             }
             if (row && bcrypt.compareSync(password, row.password)) {
                 console.log('User found');
-                res.status(200).json({ message: 'Authentication successful', user: row });
+                const userToSend = { ...row };
+                delete userToSend.password;
+                res.status(200).json({ message: 'Authentication successful', user: userToSend });
             } else {
                 console.log('No user found');
                 res.status(401).json({ message: 'Authentication failed' });

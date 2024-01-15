@@ -4,7 +4,7 @@ import cors from "cors";
 import RedisCache from "./middleware/redis.cache";
 import bodyParse from "body-parser";
 import swaggerJsDoc from 'swagger-jsdoc';
-import {serve, setup} from 'swagger-ui-express'
+import { serve, setup } from 'swagger-ui-express'
 
 import { SQLiteDatabase } from "./database/database.config";
 export class App {
@@ -43,6 +43,45 @@ export class App {
                         description: 'Local PixelPotion'
                     },
                 ],
+                components: {
+                    schemas: {
+                        CustomCocktail: {
+                            type: "object",
+                            properties: {
+                                userId: {
+                                    type: "integer"
+                                },
+                                id: {
+                                    type: "integer"
+                                },
+                                name: {
+                                    type: "string"
+                                },
+                                ingredients: {
+                                    type: "array",
+                                    items: {
+                                        type: "object",
+                                        properties: {
+                                            name: {
+                                                type: "string"
+                                            },
+                                            measure: {
+                                                type: "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                instructions: {
+                                    type: "string"
+                                },
+                                image: {
+                                    type: "string",
+                                    format: "binary"
+                                }
+                            }
+                        },
+                    }
+                },
             },
             apis: ["./src/routes/*.ts", "./src/models/*.ts", "./src/controller/*.ts"],
         };
@@ -50,6 +89,7 @@ export class App {
         const swaggerSpec = swaggerJsDoc(options);
         this.app.use("/docs", serve, setup(swaggerSpec));
     }
+
 
     private initializeCache() {
         RedisCache.initialize();
