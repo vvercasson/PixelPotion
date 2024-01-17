@@ -7,6 +7,8 @@ import { CustomAppBar } from "../components/AppBarComponents/CustomAppBar";
 import { CocktailThumbnail } from "../components/CocktailComponents/CocktailThumbnail";
 import { emptyCocktail } from "../model/Cocktail";
 
+import './UsersCocktails.css'
+
 export const UsersCocktails: React.FC = () => {
 
     const user = useContext(AuthContext).user;

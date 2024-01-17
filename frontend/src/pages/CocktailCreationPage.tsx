@@ -26,16 +26,16 @@ export const CocktailCreationPage: React.FC = () => {
             alert('This potion needs a name !')
             return
         }
-        if (ingredients.length === 0) {
-            alert('This potion needs ingredients !')
+        if (!image) {
+            alert('This potion needs an image !')
             return
         }
         if (instructions === '') {
             alert('This potion needs instructions !')
             return
         }
-        if (!image) {
-            alert('This potion needs an image !')
+        if (ingredients.length === 0) {
+            alert('This potion needs ingredients !')
             return
         }
     }
@@ -75,11 +75,11 @@ export const CocktailCreationPage: React.FC = () => {
             <div className="creation-container">
                 <h3 className="title">Create your own Potion</h3>
                 <div className="create-div">
-                    <input type="text" name="cocktail-name" id="cocktail-name-input" className="cocktail-name-input" onChange={handleNameChange} />
+                    <input type="text" name="cocktail-name" id="cocktail-name-input" className="cocktail-name-input" placeholder='Enter Potion Name' onChange={handleNameChange} />
                     <ImageInput onImageChange={imageCallback} />
                     <CustomInstructions onInstructionsChange={instructionsCallback} />
                     <CustomCocktailIngredients onIngredientsChange={ingredientsCallback} />
-                    <button type="button" onClick={handlePublish}>Publish</button>
+                    <button type="button" className='publish-btn' onClick={handlePublish}>Publish</button>
                 </div>
             </div>
         </>

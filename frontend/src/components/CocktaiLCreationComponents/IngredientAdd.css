@@ -9,4 +9,43 @@
 .ingredient-adding-input, .measure-adding-input {
     margin: 0.3rem 0;
     border-radius: 0.2em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 250px;
+}
+
+.ingredient-adding-container {
+    text-align: center;
+    margin: 20px auto;
+    border-radius: 12px;
+    width: fit-content;
+}
+
+.ingredient-adding-container h3 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.ingredient-adding-button {
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.valid-entry {
+    background-color: #4CAF50;
+}
+
+.not-valid {
+    background-color: #f44336;
+}
+
+.valid-entry:hover {
+    background-color: #45a049;
 }

@@ -52,3 +52,7 @@
     grid-template-columns: repeat(1, 1fr);
   }
 }
+
+.ingredient-delete-button {
+  background-color:rgb(235, 72, 72);
+}

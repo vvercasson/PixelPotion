@@ -22,11 +22,25 @@ export const IngredientAdd: React.FC<IngredientAddProps> = ({ onAdd }) => {
     }
 
     const handleAdd = () => {
-        if (ingredient.strIngredient === '' || ingredient.strMeasure === '') {
-            alert('Please fill in the fields the best you can !')
+        if (checkIfEmpty(ingredient)) {
+            alert('Please fill in both fields')
             return
         }
         onAdd(ingredient)
+    }
+
+    const checkIfEmpty = (ingredient: Ingredient): boolean => {
+        if (ingredient.strIngredient === '' || ingredient.strMeasure === '') {
+            return true
+        }
+        return false
+    }
+
+    const getButtonClass = (): string => {
+        if (checkIfEmpty(ingredient)) {
+            return 'not-valid'
+        }
+        return 'valid-entry'
     }
 
     return (
@@ -37,7 +51,7 @@ export const IngredientAdd: React.FC<IngredientAddProps> = ({ onAdd }) => {
                     <div className="ingredient-adding-div">
                         <input type="text" className="ingredient-adding-input" placeholder="Name" onChange={handleNameChange} />
                         <input type="text" className="measure-adding-input" placeholder="Quantity or Measurement" onChange={handleMeasureChange} />
-                        <button className="ingredient-adding-button" onClick={handleAdd}>Add Ingredient</button>
+                        <button className={"ingredient-adding-button " + getButtonClass()} onClick={handleAdd}>Add Ingredient</button>
                     </div>
                 </div>
             </div>

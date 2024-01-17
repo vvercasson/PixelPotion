@@ -19,12 +19,10 @@ export const ImageInput: React.FC<ImageInputProps> = ({ onImageChange }) => {
     return (
         <>
             <div className="custom-img-container">
-                <div className="custom-img-container">
-                    <h3>Add the image of your potion !</h3>
-                    <input className='custom-img-input' type="file" onChange={handleImageChange} multiple={false} accept="image/*" />
-                    <div className="preview-container">
-                        {image && <img className="preview" src={URL.createObjectURL(image)} alt="preview unavailable" />}
-                    </div>
+                <h3>Add the image of your potion !</h3>
+                <input className='custom-img-input' type="file" onChange={handleImageChange} multiple={false} accept="image/*" />
+                <div className="preview-container">
+                    {image && <img className="preview" src={URL.createObjectURL(image)} alt="preview unavailable" />}
                 </div>
             </div>
         </>

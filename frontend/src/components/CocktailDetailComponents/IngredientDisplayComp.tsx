@@ -19,7 +19,7 @@ export const IngredientDisplayComp: React.FC<IngredientDisplayCompProps> = ({ nu
         <>
             <div className="ingredient-item">
                 <div className="ingredient-number">
-                    <p>{number}</p>
+                    <p>{number + 1}</p>
                     {editable && <button className="ingredient-delete-button" onClick={handleDelete}>X</button>}
                 </div>
                 <div className="ingredient-info">

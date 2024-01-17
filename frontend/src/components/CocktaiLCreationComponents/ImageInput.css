@@ -5,3 +5,18 @@
     width: auto; 
     height: auto;
 }
+
+.custom-img-container {
+    text-align: center;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 5px;
+    border: 2px dashed #ddd;
+    border-radius: 10px;
+}
+
+.custom-img-container h3 {
+    color: #555;
+    margin-bottom: 15px;
+    font-size: 18px;
+}

@@ -1,5 +1,30 @@
+.instructions-container h3 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.instructions-container {
+    text-align: center;
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    width: fit-content;
+}
+
 .custom-instr {
     min-width: 30em;
     min-height: 5em;
-    border-radius: 1em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+.custom-instr:focus {
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px var(--custom-blue);
 }
